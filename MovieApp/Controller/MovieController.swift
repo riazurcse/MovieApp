@@ -22,7 +22,8 @@ class MovieController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // configure collectionView
+        self.title = "Movies"
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName:"MovieCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
