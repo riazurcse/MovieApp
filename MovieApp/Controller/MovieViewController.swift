@@ -1,5 +1,5 @@
 //
-//  MovieController.swift
+//  MovieViewController.swift
 //  MovieApp
 //
 //  Created by Riajur Rahman on 23/2/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieController: UIViewController {
+class MovieViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -83,7 +83,7 @@ class MovieController: UIViewController {
     }
 }
 
-extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if movieViewModel.searchedMovies().count > 0 {
@@ -117,9 +117,9 @@ extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource,
             MovieDetailsViewModel().movieDetails(imdbId: id) { movieDetails in
                 if movieDetails != nil {
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let movieDetailController = mainStoryboard.instantiateViewController(withIdentifier: "MovieDetailC") as! MovieDetailController
-                    movieDetailController.movieDetailsViewModel = movieDetails
-                    self.navigationController?.pushViewController(movieDetailController, animated: true)
+                    let movieDetailVController = mainStoryboard.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailViewController
+                    movieDetailVController.movieDetailsViewModel = movieDetails
+                    self.navigationController?.pushViewController(movieDetailVController, animated: true)
                 } else {
                     CommonUtils.showPrompt("Opps...", message: Constant.GENERIC_MESSAGE , buttons: ["OK"], delegate: nil) { _ in }
                 }
@@ -128,7 +128,7 @@ extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource,
     }
 }
 
-extension MovieController: UIScrollViewDelegate {
+extension MovieViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
@@ -141,7 +141,7 @@ extension MovieController: UIScrollViewDelegate {
     }
 }
 
-extension MovieController: UISearchBarDelegate {
+extension MovieViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         movieViewModel.setSearchText(text: searchBar.text?.trimmingCharacters(in: .whitespaces))

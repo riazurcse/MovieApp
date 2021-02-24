@@ -1,5 +1,5 @@
 //
-//  MovieDetailController.swift
+//  MovieDetailViewController.swift
 //  MovieApp
 //
 //  Created by Riajur Rahman on 24/2/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailController: UIViewController {
+class MovieDetailViewController: UIViewController {
 
     var movieDetailsViewModel: MovieDetailsViewModel?
     
